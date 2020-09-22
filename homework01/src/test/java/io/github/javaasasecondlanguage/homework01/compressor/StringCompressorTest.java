@@ -64,36 +64,34 @@ class StringCompressorTest {
     void maxTest500()
             throws IllegalArgumentException {
 
-        var subject = (
-                "ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbddds" +
-                        "xlrggcqhyevuxhrwxfqvjkhwmqoydt"
-                        + "yuocfvljxiiwsdhuxhryuwnjvckjjowffdusiourt" +
-                        "tfiiocudlukbyqfnnavbetjtfmlzbcppdjbjhts"
-                        + "pcaeotbnucazkazzysaxlpsrkpbzxwygksyozmidr" +
-                        "pvcdjbvpjkkcgcobhsojawgeozwohwzeglpkveh"
-                        + "wehepadbzlueayltfdcrayscrcokggdglanvcustf" +
-                        "olobekqteqpmabghvkedjaupghhiikdjdizarky"
-                        + "ndxzlxcmuivxlayajsclfxyzumczqfzsvysquenft" +
-                        "inkburtsassumpkghajevjgiqzebrgnhtggfwcf"
-                        + "qwmokceesaynxetpmaqodzwiulnhnevtlappgpbwx" +
-                        "pmyxpnhwmjmzzzpjjzijilltyrnwqosfrqzaytr"
-                        + "lbgzzoxafianxvwcbl"
+        var subject = ("ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbddds"
+                + "xlrggcqhyevuxhrwxfqvjkhwmqoydt"
+                + "yuocfvljxiiwsdhuxhryuwnjvckjjowffdusiourt"
+                + "tfiiocudlukbyqfnnavbetjtfmlzbcppdjbjhts"
+                + "pcaeotbnucazkazzysaxlpsrkpbzxwygksyozmidr"
+                + "pvcdjbvpjkkcgcobhsojawgeozwohwzeglpkveh"
+                + "wehepadbzlueayltfdcrayscrcokggdglanvcustf"
+                + "olobekqteqpmabghvkedjaupghhiikdjdizarky"
+                + "ndxzlxcmuivxlayajsclfxyzumczqfzsvysquenft"
+                + "inkburtsassumpkghajevjgiqzebrgnhtggfwcf"
+                + "qwmokceesaynxetpmaqodzwiulnhnevtlappgpbwx"
+                + "pmyxpnhwmjmzzzpjjzijilltyrnwqosfrqzaytr"
+                + "lbgzzoxafianxvwcbl"
         ).toCharArray();
 
-        var result = (
-                "ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbd3s" +
-                        "xlrg2cqhyevuxhrwxfqvjkhwmqoydty"
-                        + "uocfvljxi2wsdhuxhryuwnjvckj2owf2dusiourt2" +
-                        "fi2ocudlukbyqfn2avbetjtfmlzbcp2djbjhtsp"
-                        + "caeotbnucazkaz2ysaxlpsrkpbzxwygksyozmidrpv" +
-                        "cdjbvpjk2cgcobhsojawgeozwohwzeglpkvehw"
-                        + "ehepadbzlueayltfdcrayscrcokg2dglanvcustfol" +
-                        "obekqteqpmabghvkedjaupgh2i2kdjdizarkyn"
-                        + "dxzlxcmuivxlayajsclfxyzumczqfzsvysquenftin" +
-                        "kburtsas2umpkghajevjgiqzebrgnhtg2fwcfq"
-                        + "wmokce2saynxetpmaqodzwiulnhnevtlap2gpbwxpm" +
-                        "yxpnhwmjmz3pj2zijil2tyrnwqosfrqzaytrlb"
-                        + "gz2oxafianxvwcbl"
+        var result = ("ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbd3s"
+                + "xlrg2cqhyevuxhrwxfqvjkhwmqoydty"
+                + "uocfvljxi2wsdhuxhryuwnjvckj2owf2dusiourt2"
+                + "fi2ocudlukbyqfn2avbetjtfmlzbcp2djbjhtsp"
+                + "caeotbnucazkaz2ysaxlpsrkpbzxwygksyozmidrpv"
+                + "cdjbvpjk2cgcobhsojawgeozwohwzeglpkvehw"
+                + "ehepadbzlueayltfdcrayscrcokg2dglanvcustfol"
+                + "obekqteqpmabghvkedjaupgh2i2kdjdizarkyn"
+                + "dxzlxcmuivxlayajsclfxyzumczqfzsvysquenftin"
+                + "kburtsas2umpkghajevjgiqzebrgnhtg2fwcfq"
+                + "wmokce2saynxetpmaqodzwiulnhnevtlap2gpbwxpm"
+                + "yxpnhwmjmz3pj2zijil2tyrnwqosfrqzaytrlb"
+                + "gz2oxafianxvwcbl"
         ).toCharArray();
 
         assertArrayEquals(result, compressor.compress(subject));
