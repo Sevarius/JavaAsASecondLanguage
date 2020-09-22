@@ -15,7 +15,8 @@ class StringCompressorTest {
     }
 
     @Test
-    void nullIsIllegalArgument() throws IllegalArgumentException {
+    void nullIsIllegalArgument()
+            throws IllegalArgumentException {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> compressor.compress(null)
@@ -23,7 +24,8 @@ class StringCompressorTest {
     }
 
     @Test
-    void stringWithIllegalCharacters() throws IllegalArgumentException {
+    void stringWithIllegalCharacters()
+            throws IllegalArgumentException {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> compressor.compress("Што такое?!!1адинадин".toCharArray())
@@ -31,49 +33,66 @@ class StringCompressorTest {
     }
 
     @Test
-    void noCompressionForSingleChar() throws IllegalArgumentException {
+    void noCompressionForSingleChar()
+            throws IllegalArgumentException {
         var subject = "a".toCharArray();
         assertArrayEquals(subject, compressor.compress(subject));
     }
 
     @Test
-    void noCompressionForSimpleString() throws IllegalArgumentException {
+    void noCompressionForSimpleString()
+            throws IllegalArgumentException {
         var subject = "abc".toCharArray();
         assertArrayEquals(subject, compressor.compress(subject));
     }
 
     @Test
-    void sample1() throws IllegalArgumentException {
+    void sample1()
+            throws IllegalArgumentException {
         var subject = "aabbccc".toCharArray();
         assertArrayEquals("a2b2c3".toCharArray(), compressor.compress(subject));
     }
 
     @Test
-    void sample2() throws IllegalArgumentException {
+    void sample2()
+            throws IllegalArgumentException {
         var subject = "mcobtwwwwaokzngssaox".toCharArray();
         assertArrayEquals("mcobtw4aokzngs2aox".toCharArray(), compressor.compress(subject));
     }
 
     @Test
-    void maxTest500() throws IllegalArgumentException {
+    void maxTest500()
+            throws IllegalArgumentException {
 
         var subject = (
-                "ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbdddsxlrggcqhyevuxhrwxfqvjkhwmqoydt"
-                        + "yuocfvljxiiwsdhuxhryuwnjvckjjowffdusiourttfiiocudlukbyqfnnavbetjtfmlzbcppdjbjhts"
-                        + "pcaeotbnucazkazzysaxlpsrkpbzxwygksyozmidrpvcdjbvpjkkcgcobhsojawgeozwohwzeglpkveh"
-                        + "wehepadbzlueayltfdcrayscrcokggdglanvcustfolobekqteqpmabghvkedjaupghhiikdjdizarky"
-                        + "ndxzlxcmuivxlayajsclfxyzumczqfzsvysquenftinkburtsassumpkghajevjgiqzebrgnhtggfwcf"
-                        + "qwmokceesaynxetpmaqodzwiulnhnevtlappgpbwxpmyxpnhwmjmzzzpjjzijilltyrnwqosfrqzaytr"
+                "ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbddds" +
+                        "xlrggcqhyevuxhrwxfqvjkhwmqoydt"
+                        + "yuocfvljxiiwsdhuxhryuwnjvckjjowffdusiourt" +
+                        "tfiiocudlukbyqfnnavbetjtfmlzbcppdjbjhts"
+                        + "pcaeotbnucazkazzysaxlpsrkpbzxwygksyozmidr" +
+                        "pvcdjbvpjkkcgcobhsojawgeozwohwzeglpkveh"
+                        + "wehepadbzlueayltfdcrayscrcokggdglanvcustf" +
+                        "olobekqteqpmabghvkedjaupghhiikdjdizarky"
+                        + "ndxzlxcmuivxlayajsclfxyzumczqfzsvysquenft" +
+                        "inkburtsassumpkghajevjgiqzebrgnhtggfwcf"
+                        + "qwmokceesaynxetpmaqodzwiulnhnevtlappgpbwx" +
+                        "pmyxpnhwmjmzzzpjjzijilltyrnwqosfrqzaytr"
                         + "lbgzzoxafianxvwcbl"
         ).toCharArray();
 
         var result = (
-                "ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbd3sxlrg2cqhyevuxhrwxfqvjkhwmqoydty"
-                        + "uocfvljxi2wsdhuxhryuwnjvckj2owf2dusiourt2fi2ocudlukbyqfn2avbetjtfmlzbcp2djbjhtsp"
-                        + "caeotbnucazkaz2ysaxlpsrkpbzxwygksyozmidrpvcdjbvpjk2cgcobhsojawgeozwohwzeglpkvehw"
-                        + "ehepadbzlueayltfdcrayscrcokg2dglanvcustfolobekqteqpmabghvkedjaupgh2i2kdjdizarkyn"
-                        + "dxzlxcmuivxlayajsclfxyzumczqfzsvysquenftinkburtsas2umpkghajevjgiqzebrgnhtg2fwcfq"
-                        + "wmokce2saynxetpmaqodzwiulnhnevtlap2gpbwxpmyxpnhwmjmz3pj2zijil2tyrnwqosfrqzaytrlb"
+                "ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbd3s" +
+                        "xlrg2cqhyevuxhrwxfqvjkhwmqoydty"
+                        + "uocfvljxi2wsdhuxhryuwnjvckj2owf2dusiourt2" +
+                        "fi2ocudlukbyqfn2avbetjtfmlzbcp2djbjhtsp"
+                        + "caeotbnucazkaz2ysaxlpsrkpbzxwygksyozmidrpv" +
+                        "cdjbvpjk2cgcobhsojawgeozwohwzeglpkvehw"
+                        + "ehepadbzlueayltfdcrayscrcokg2dglanvcustfol" +
+                        "obekqteqpmabghvkedjaupgh2i2kdjdizarkyn"
+                        + "dxzlxcmuivxlayajsclfxyzumczqfzsvysquenftin" +
+                        "kburtsas2umpkghajevjgiqzebrgnhtg2fwcfq"
+                        + "wmokce2saynxetpmaqodzwiulnhnevtlap2gpbwxpm" +
+                        "yxpnhwmjmz3pj2zijil2tyrnwqosfrqzaytrlb"
                         + "gz2oxafianxvwcbl"
         ).toCharArray();
 
@@ -81,7 +100,8 @@ class StringCompressorTest {
     }
 
     @Test
-    void emptyArrayIsAlreadyCompressed() throws IllegalArgumentException {
+    void emptyArrayIsAlreadyCompressed()
+            throws IllegalArgumentException {
         var emptyCharArray = new char[]{};
         var result = compressor.compress(emptyCharArray);
         assertArrayEquals(emptyCharArray, result);
