@@ -15,7 +15,7 @@ class StringCompressorTest {
     }
 
     @Test
-    void nullIsIllegalArgument() {
+    void nullIsIllegalArgument() throws IllegalArgumentException {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> compressor.compress(null)
@@ -23,7 +23,7 @@ class StringCompressorTest {
     }
 
     @Test
-    void stringWithIllegalCharacters() {
+    void stringWithIllegalCharacters() throws IllegalArgumentException {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> compressor.compress("Што такое?!!1адинадин".toCharArray())
@@ -31,31 +31,31 @@ class StringCompressorTest {
     }
 
     @Test
-    void noCompressionForSingleChar() {
+    void noCompressionForSingleChar() throws IllegalArgumentException {
         var subject = "a".toCharArray();
         assertArrayEquals(subject, compressor.compress(subject));
     }
 
     @Test
-    void noCompressionForSimpleString() {
+    void noCompressionForSimpleString() throws IllegalArgumentException {
         var subject = "abc".toCharArray();
         assertArrayEquals(subject, compressor.compress(subject));
     }
 
     @Test
-    void sample1() {
+    void sample1() throws IllegalArgumentException {
         var subject = "aabbccc".toCharArray();
         assertArrayEquals("a2b2c3".toCharArray(), compressor.compress(subject));
     }
 
     @Test
-    void sample2() {
+    void sample2() throws IllegalArgumentException {
         var subject = "mcobtwwwwaokzngssaox".toCharArray();
         assertArrayEquals("mcobtw4aokzngs2aox".toCharArray(), compressor.compress(subject));
     }
 
     @Test
-    void maxTest500() {
+    void maxTest500() throws IllegalArgumentException {
 
         var subject = (
                 "ubejrewmdnujlnrsqfrtrwnscangpjkbocajvsqdevtxifpbdddsxlrggcqhyevuxhrwxfqvjkhwmqoydt"
@@ -81,7 +81,7 @@ class StringCompressorTest {
     }
 
     @Test
-    void emptyArrayIsAlreadyCompressed() {
+    void emptyArrayIsAlreadyCompressed() throws IllegalArgumentException {
         var emptyCharArray = new char[]{};
         var result = compressor.compress(emptyCharArray);
         assertArrayEquals(emptyCharArray, result);
