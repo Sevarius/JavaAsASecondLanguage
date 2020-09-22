@@ -3,7 +3,7 @@ package io.github.javaasasecondlanguage.homework01.compressor;
 public class StringCompressor {
     /**
      * Given an array of characters, compress it using the following algorithm:
-     *
+     * <p>
      * Begin with an empty string s.
      * For each group of consecutive repeating characters in chars:
      * If the group's length is 1, append the character to s.
@@ -30,11 +30,11 @@ public class StringCompressor {
      */
     public char[] compress(char[] str) throws IllegalArgumentException {
 
-        if(str == null) {
+        if (str == null) {
             throw new IllegalArgumentException();
         }
 
-        if(str.length == 0) {
+        if (str.length == 0) {
             return str;
         }
 
@@ -42,17 +42,16 @@ public class StringCompressor {
         int countCurrentLetter = 1;
         char currentLetter = str[0];
 
-        for(int i = 1; i < str.length; i++) {
-            if(str[i] < 'a' || str[i] > 'z') {
+        for (int i = 1; i < str.length; i++) {
+            if (str[i] < 'a' || str[i] > 'z') {
                 throw new IllegalArgumentException();
             }
 
-            if(currentLetter == str[i]) {
+            if (currentLetter == str[i]) {
                 countCurrentLetter++;
-            }
-            else {
+            } else {
                 resultString.append(currentLetter);
-                if(countCurrentLetter != 1) {
+                if (countCurrentLetter != 1) {
                     resultString.append(countCurrentLetter);
                     countCurrentLetter = 1;
                 }
@@ -61,7 +60,7 @@ public class StringCompressor {
         }
 
         resultString.append(currentLetter);
-        if(countCurrentLetter != 1) {
+        if (countCurrentLetter != 1) {
             resultString.append(countCurrentLetter);
         }
         return resultString.toString().toCharArray();

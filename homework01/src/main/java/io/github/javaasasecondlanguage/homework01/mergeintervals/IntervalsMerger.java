@@ -19,39 +19,38 @@ public class IntervalsMerger {
      * @throws IllegalArgumentException if intervals is null
      */
     public int[][] merge(int[][] intervals) throws IllegalArgumentException {
-            if(intervals == null) {
-                throw new IllegalArgumentException();
-            }
-            if(intervals.length == 0 || intervals.length == 1) {
-                return intervals;
-            }
-            ArrayList<int[]> intervalsList = new ArrayList<int[]>(Arrays.asList(intervals));
+        if (intervals == null) {
+            throw new IllegalArgumentException();
+        }
+        if (intervals.length == 0 || intervals.length == 1) {
+            return intervals;
+        }
+        ArrayList<int[]> intervalsList = new ArrayList<int[]>(Arrays.asList(intervals));
 
-            ArrayList<int[]> resultList = new ArrayList<int[]>();
-            intervalsList.sort(this::comparePair);
-            int leftNumber = intervalsList.get(0)[0], rightNumber = intervalsList.get(0)[1];
+        ArrayList<int[]> resultList = new ArrayList<int[]>();
+        intervalsList.sort(this::comparePair);
+        int leftNumber = intervalsList.get(0)[0], rightNumber = intervalsList.get(0)[1];
 
-            for(int i = 1; i < intervalsList.size(); i++) {
-                if(intervalsList.get(i)[0] > rightNumber) {
-                    resultList.add(new int[]{leftNumber, rightNumber});
-                    leftNumber = intervalsList.get(i)[0];
-                    rightNumber = intervalsList.get(i)[1];
-                }
-                else {
-                    rightNumber = Math.max(intervalsList.get(i)[1], rightNumber);
-                }
+        for (int i = 1; i < intervalsList.size(); i++) {
+            if (intervalsList.get(i)[0] > rightNumber) {
+                resultList.add(new int[]{leftNumber, rightNumber});
+                leftNumber = intervalsList.get(i)[0];
+                rightNumber = intervalsList.get(i)[1];
+            } else {
+                rightNumber = Math.max(intervalsList.get(i)[1], rightNumber);
             }
-
-            resultList.add(new int[]{leftNumber, rightNumber});
-            int[][] temp = new int[resultList.size()][2];
-            return resultList.toArray(temp);
         }
 
-        public int comparePair (int[] left, int[] right) {
-            int result = Integer.compare(left[0], right[0]);
-            if(result == 0) {
-                result = Integer.compare(left[1], right[1]);
-            }
-            return result;
-        }
+        resultList.add(new int[]{leftNumber, rightNumber});
+        int[][] temp = new int[resultList.size()][2];
+        return resultList.toArray(temp);
     }
+
+    public int comparePair(int[] left, int[] right) {
+        int result = Integer.compare(left[0], right[0]);
+        if (result == 0) {
+            result = Integer.compare(left[1], right[1]);
+        }
+        return result;
+    }
+}
