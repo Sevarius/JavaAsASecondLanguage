@@ -5,7 +5,8 @@ import java.util.Arrays;
 
 public class IntervalsMerger {
     /**
-     * Given array of intervals, merge overlapping intervals and sort them by start in ascending order
+     * Given array of intervals, merge overlapping intervals and
+     * sort them by start in ascending order
      * Interval is defined as [start, end] where start < end
      * <p>
      * Examples:
@@ -29,7 +30,8 @@ public class IntervalsMerger {
 
         ArrayList<int[]> resultList = new ArrayList<int[]>();
         intervalsList.sort(this::comparePair);
-        int leftNumber = intervalsList.get(0)[0], rightNumber = intervalsList.get(0)[1];
+        int leftNumber = intervalsList.get(0)[0];
+        int rightNumber = intervalsList.get(0)[1];
 
         for (int i = 1; i < intervalsList.size(); i++) {
             if (intervalsList.get(i)[0] > rightNumber) {
