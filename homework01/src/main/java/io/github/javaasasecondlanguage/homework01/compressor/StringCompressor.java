@@ -29,6 +29,6 @@ public class StringCompressor {
      * @throws IllegalArgumentException if any char is not in range 'a'..'z'
      */
     public char[] compress(char[] str) {
-        throw new RuntimeException("Not imgplemented");
+        throw new RuntimeException("Not implemented");
     }
 }
