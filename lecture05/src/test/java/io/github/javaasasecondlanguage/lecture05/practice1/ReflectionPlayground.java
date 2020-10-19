@@ -3,30 +3,44 @@ package io.github.javaasasecondlanguage.lecture05.practice1;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
-@Disabled
 public class ReflectionPlayground {
+
     @Test
-    void createA() {
+    void createA() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // create A instance using reflection
         // hint: A.class
+        var a = A.class.getDeclaredConstructor().newInstance();
+        System.out.println(a);
     }
 
     @Test
-    void createB() {
+    void createB() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // create B instance using reflection
         // hint: change access
+        var b = B.class.getDeclaredConstructor().newInstance();
+        System.out.println(b);
     }
 
     @Test
     void listMethodsA() {
-        // list methods of class A
+        var aList = B.class.getMethods();
+        for (var m : aList) {
+            System.out.println(m.getName());
+        }
     }
 
     @Test
     void listMethodsAnnotatedWithOverride() {
-        // list Methods of class C annotated with override
+        var aList = C.class.getMethods();
+        for (var m : aList) {
+            var annList = m.getAnnotations();
+            if (annList.length == 1 && annList[0].getClass().getName() == "Override")
+                System.out.println();
+        }
     }
 
     static class A {

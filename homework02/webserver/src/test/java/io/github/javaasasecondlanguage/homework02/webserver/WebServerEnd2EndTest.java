@@ -10,6 +10,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.concurrent.Executors;
 
 import static io.github.javaasasecondlanguage.homework02.di.Injector.inject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +23,7 @@ public class WebServerEnd2EndTest {
 
     @BeforeAll
     static void setupAll() {
+        var i = Executors.newFixedThreadPool(1);
         Application.initDI();
     }
 

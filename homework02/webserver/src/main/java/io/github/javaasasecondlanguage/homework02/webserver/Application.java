@@ -9,14 +9,15 @@ import java.util.concurrent.Executors;
 public class Application {
     public static void initDI() {
         new Context()
-                .register(Map.of("/test", new MyHttpHandler()))
-                .register(new MyWebServer())
+                .register((Logger) System.out::println)
+                .register("Hello dear ", "welcomeText")
                 .register(8080, "port")
                 .register("localhost", "host")
-                .register(Executors.newFixedThreadPool(10))
+                .register(Executors.newFixedThreadPool(1))
                 .register(Map.of("/test", new MyHttpHandler()))
-                .register("Hello dear ", "welcomeText")
-                .register((Logger) System.out::println);
+                .register(new MyWebServer());
+
+
     }
 
     public static void main(String[] args) {

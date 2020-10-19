@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import static io.github.javaasasecondlanguage.homework02.di.Injector.inject;
 
@@ -17,7 +18,7 @@ public class MyWebServer implements WebServer {
     private static final Logger log = inject(Logger.class);
     private String host = inject(String.class, "host");
     private int port = inject(Integer.class, "port");
-    private Executor executor = inject(Executor.class);
+    private Executor executor = inject(ThreadPoolExecutor.class);
     private Map<String, HttpHandler> handlers = inject(Map.class);
 
     private HttpServer server;

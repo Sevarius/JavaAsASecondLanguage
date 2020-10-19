@@ -1,5 +1,8 @@
 package io.github.javaasasecondlanguage.lecture05.practice2;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,8 +29,19 @@ public class SerializationUtil {
      *
      * @return
      */
-    static Map<String, ?> serialize(Object obj) {
-        throw new RuntimeException("Not implemented");
+    static Map<String, ?> serialize(Object obj) throws IllegalAccessException {
+        //throw new RuntimeException("Not implemented");
+        var res = new HashMap<String, Object>();
+        try {
+            for (var field : obj.getClass().getDeclaredFields()) {
+                field.setAccessible(true);
+                res.put(field.getName(), field.get(obj));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 
     /**
@@ -35,7 +49,14 @@ public class SerializationUtil {
      * @param obj - map representation of object
      * @param clazz - target type of deserialization
      */
-    static <T> T deserialize(Map<String, ?> obj, Class<T> clazz) {
-        throw new RuntimeException("Not implemented");
+    static <T> T deserialize(Map<String, ?> obj, Class<T> clazz) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        //throw new RuntimeException("Not implemented");
+        var ctor = clazz.getDeclaredConstructor();
+        T instance = ctor.newInstance();
+        for (Field declaredField : clazz.getDeclaredFields()) {
+            declaredField.setAccessible(true);
+            declaredField.set(instance, obj.get(declaredField.getName()));
+        }
+        return instance;
     }
 }

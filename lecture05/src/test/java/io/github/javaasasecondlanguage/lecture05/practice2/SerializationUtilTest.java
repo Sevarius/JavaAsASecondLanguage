@@ -3,13 +3,14 @@ package io.github.javaasasecondlanguage.lecture05.practice2;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Disabled
+
 class SerializationUtilTest {
 
     static class A {
@@ -39,7 +40,7 @@ class SerializationUtilTest {
     }
 
     @Test
-    void serializeTest() {
+    void serializeTest() throws IllegalAccessException {
         A a = new A();
         a.theInteger = 42;
         a.theString = "xxx";
@@ -51,7 +52,7 @@ class SerializationUtilTest {
     }
 
     @Test
-    void deserializeTest() {
+    void deserializeTest() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Map<String, ?> map = Map.of("theInteger", 42, "theString", "xxx");
         var result = SerializationUtil.deserialize(map, A.class);
 
@@ -61,7 +62,7 @@ class SerializationUtilTest {
     }
 
     @Test
-    void serializeThenDeserialize() {
+    void serializeThenDeserialize() throws IllegalAccessException, NoSuchMethodException, InstantiationException, InvocationTargetException {
         var b = new B();
         b.theDouble = 1.2345;
         b.list = new ArrayList<>();
