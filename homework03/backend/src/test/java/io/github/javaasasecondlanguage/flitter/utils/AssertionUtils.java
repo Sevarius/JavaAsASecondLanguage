@@ -13,6 +13,8 @@ import static java.lang.String.format;
 
 public class AssertionUtils {
 
+    private static RequestInfo lastRequestInfo = new RequestInfo("<nothing called yet>", null, Map.of(), null);
+
     public static void assertTrue(boolean condition) {
         String fullMessage = lastRequestInfo.toString();
         org.junit.jupiter.api.Assertions.assertTrue(condition, fullMessage);
@@ -98,6 +100,8 @@ public class AssertionUtils {
         }
     }
 
+    // ==== Information about last HTTP request is saved in static context for better assertion messages.
+
     private static void handleUnexpectedSuccess(HttpStatus statusCode,
                                                 String errorMessage,
                                                 Object data) {
@@ -128,10 +132,6 @@ public class AssertionUtils {
             fail(assertionMessage);
         }
     }
-
-    // ==== Information about last HTTP request is saved in static context for better assertion messages.
-
-    private static RequestInfo lastRequestInfo = new RequestInfo("<nothing called yet>", null, Map.of(), null);
 
     public static void saveRequestInfo(String endpoint,
                                        RequestInfo.Method method,

@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static io.github.javaasasecondlanguage.flitter.utils.AssertionUtils.assertEquals;
-import static io.github.javaasasecondlanguage.flitter.utils.AssertionUtils.assertNotNull;
-import static io.github.javaasasecondlanguage.flitter.utils.AssertionUtils.assertThatStatusIsExpected;
+import static io.github.javaasasecondlanguage.flitter.utils.AssertionUtils.*;
 import static io.github.javaasasecondlanguage.flitter.utils.ExpectedStatus.EXPECT_FAIL;
 
 public class FlitterRestMethods {

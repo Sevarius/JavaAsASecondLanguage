@@ -14,9 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static io.github.javaasasecondlanguage.flitter.utils.AssertionUtils.assertMapsEqualByKeys;
-import static io.github.javaasasecondlanguage.flitter.utils.AssertionUtils.assertSetEquals;
-import static io.github.javaasasecondlanguage.flitter.utils.AssertionUtils.assertTrue;
+import static io.github.javaasasecondlanguage.flitter.utils.AssertionUtils.*;
 import static io.github.javaasasecondlanguage.flitter.utils.ExpectedStatus.EXPECT_FAIL;
 import static io.github.javaasasecondlanguage.flitter.utils.ExpectedStatus.EXPECT_SUCCESS;
 
